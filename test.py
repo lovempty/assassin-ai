@@ -1,5 +1,24 @@
-from datetime import date
-
-today = date.today()
-d2 = today.strftime("%B %d, %Y")
-print(d2)
+# Python program to 
+# demonstrate creation of an
+# assistant using wolf ram API
+  
+import wolframalpha
+  
+# Taking input from user
+question = input('Question: ')
+  
+# App id obtained by the above steps
+app_id = '7G3EKL-JG5WXVA89K'
+  
+# Instance of wolf ram alpha 
+# client class
+client = wolframalpha.Client(app_id)
+  
+# Stores the response from 
+# wolf ram alpha
+res = client.query(question)
+  
+# Includes only text from the response
+answer = next(res.results).text
+  
+print(answer)

@@ -9,7 +9,8 @@ def listen():
     audio =assassin_ear.record(mic, duration=3)
   try:
     you = assassin_ear.recognize_google(audio)
+    print("Synth: " + you)
   except:
-    you = "Sorry. I cannot hear you :("
+    you = "no_sound"
   return you
   
