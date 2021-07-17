@@ -10,8 +10,8 @@ assassin_ear = speech_recognition.Recognizer()
 # assassin_mouth = pyttsx3.init()
 # assassin_mouth.setProperty("rate", 178)
 assassin_brain = ""
-speak = speak.speak()
-understand = understand.understand()
+speak = speak.speak
+understand = understand.understand
 
 print('Hi. I am assassin - A smart AI created by Synth. Nice to meet you!')
 speak('hi. i am assassin - a smart AI created by Synth. nice to meet you!')
