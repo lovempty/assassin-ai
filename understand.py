@@ -2,17 +2,20 @@
 # Start creating Assassin's brain
 import speak
 import common
+import subprocess
+
 
 speak = speak.speak
 def understand(question = ""):
   # Hello  
   if question == "":
       assassin_brain = "I'm listening to you, say something my boy"
-  elif ("what" and "can" and "you" and "do") in question:
+  elif "what" in question and "can" in question and "you" in question and "do" in question:
       assassin_brain= """I can do something like: 
                         give you information about today date, time. 
                         I can open google, youtube or facebook for you. 
-                        If you are bored, I can tell some jokes. 
+                        If you are bored, I can tell some jokes.
+                        Answer "do you know" questions. 
                         Sometime answer your weird questions..."""
   elif "hello" in question:
       assassin_brain = "Hi Synth"
@@ -24,6 +27,13 @@ def understand(question = ""):
       assassin_brain = "I am assassin - Synth's friend."
   elif "i love you" in question:
       assassin_brain = "aw. I love you too"
+  #operating with compututer system
+  elif "shutdown pc" in question or "shutdown computer" in question or "turn off pc"  in question:
+      assassin_brain = "Your computer is on its way to shutdown in few seconds"
+      subprocess.call('shutdown / p /f')
+  elif "restart" in question and "pc" in question:
+      assassin_brain = "Your computer is on its way to restart in few seconds"
+      subprocess.call(["shutdown", "/r"])
   # common information
   elif ("who" in question and "create" in question) or ("who"  in question and "made" in question) or ("who" in question and "make" in question):
       assassin_brain = "It's Synth"
@@ -51,7 +61,7 @@ def understand(question = ""):
   elif "joke" in question: 
       assassin_brain = common.getAJoke()
   # get an advice
-  elif "should i" in question or "do you think " in question:
+  elif question.startswith("should i") or question.startswith("do you think"):
       assassin_brain = common.yesOrNo()
   elif "bye" in question or "see you" in question:
       assassin_brain = "See you!"

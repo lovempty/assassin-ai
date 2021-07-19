@@ -18,7 +18,7 @@ def wiki(keyword = ""):
   try:
     return wikipedia.summary(keyword, sentences = 2) 
   except:
-    return "I dont know this term. Please give me more information. Maybe I can help"
+    return "I don't know that thing. Please give me more information. Maybe I can help"
 
 def open(link = ""):
   webbrowser.open(link)
