@@ -1,3 +1,4 @@
-import common
+import pygame
 
-print(common.calAge())
+f = pygame.__file__
+print(f)

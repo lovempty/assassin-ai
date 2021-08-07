@@ -1,12 +1,15 @@
 # Version 1.0
 # Start creating Assassin's brain
+from re import T
 import speak
 import common
 import subprocess
+import listen
 
-
+listen = listen.listen
 speak = speak.speak
 def understand(question = ""):
+  question = question.lower()
   # Hello  
   if question == "":
       assassin_brain = "I'm listening to you, say something my boy"
@@ -17,7 +20,7 @@ def understand(question = ""):
                         If you are bored, I can tell some jokes.
                         Answer "do you know" questions. 
                         Sometime answer your weird questions..."""
-  elif "hello" in question:
+  elif "hello" in question or question == "hi":
       assassin_brain = "Hi Synth"
   elif "how" in question and "old" in question and "you" in question:
       assassin_brain = common.calAge()
@@ -30,12 +33,12 @@ def understand(question = ""):
   #operating with compututer system
   elif "shutdown pc" in question or "shutdown computer" in question or "turn off pc"  in question:
       assassin_brain = "Your computer is on its way to shutdown in few seconds"
-      subprocess.call('shutdown / p /f')
+      subprocess.call('shutdown /p /f')
   elif "restart" in question and "pc" in question:
       assassin_brain = "Your computer is on its way to restart in few seconds"
       subprocess.call(["shutdown", "/r"])
   # common information
-  elif ("who" in question and "create" in question) or ("who"  in question and "made" in question) or ("who" in question and "make" in question):
+  elif ("who" in question and "create you" in question) or ("who"  in question and "made you" in question) or ("who" in question and "make you" in question):
       assassin_brain = "It's Synth"
   elif "when " in question and "create" in question:
       assassin_brain = "15/07/2021"
@@ -60,6 +63,14 @@ def understand(question = ""):
   # tell some jokes
   elif "joke" in question: 
       assassin_brain = common.getAJoke()
+  # translate eng to vi
+  elif "translate" in question:
+      print("Assassin: What word or sentence do you want to translate?")
+      speak("What word or sentence do you want to translate?")
+    #   keyword = listen()
+      keyword = input("Keyword: ")
+      common.translateToVi(keyword.lower())
+      assassin_brain = 0
   # get an advice
   elif question.startswith("should i") or question.startswith("do you think"):
       assassin_brain = common.yesOrNo()
@@ -75,6 +86,4 @@ def understand(question = ""):
       return -1
   else:
       assassin_brain = common.getWolfAnswer(question)
-
-
   return assassin_brain

@@ -4,6 +4,9 @@ import webbrowser
 import pyjokes
 import wolframalpha
 import random
+from googletrans import Translator
+from gtts import gTTS
+from pygame import mixer 
 
 def getCurrentDate(): 
   today = date.today()
@@ -54,3 +57,14 @@ def calAge():
   now = datetime.now();
   return str((now - datetime.strptime('Jul 15 2021', '%b %d %Y')).days) + " days"
 
+def translateToVi(keyword):
+  translator = Translator()
+  from_lang = 'en'
+  to_lang = 'vi'
+  text_to_translate = translator.translate(keyword,src=from_lang,dest=to_lang).text
+  print("Assassin: " + text_to_translate)
+  speak = gTTS(text=text_to_translate, lang=to_lang, slow= False) 
+  speak.save("captured_voice.mp3")
+  mixer.init()
+  mixer.music.load('captured_voice.mp3')
+  mixer.music.play()
