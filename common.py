@@ -6,6 +6,8 @@ import wolframalpha
 import random
 from googletrans import Translator
 from gtts import gTTS
+from os import environ
+environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 from pygame import mixer 
 
 def getCurrentDate(): 

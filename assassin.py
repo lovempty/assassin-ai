@@ -13,8 +13,8 @@ print(common.wishMe())
 speak(common.wishMe())
 try:
     while True:
-        # answer = listen()
-        answer = input("Question: ")
+        answer = listen()
+        # answer = input("Question: ")
         # Understand
         assassin_brain = understand(answer)
         if(assassin_brain == -1): break

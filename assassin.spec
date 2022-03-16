@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(['assassin.py'],
-             pathex=['D:\\Assassin_AI'],
+             pathex=[],
              binaries=[],
              datas=[],
              hiddenimports=[],
